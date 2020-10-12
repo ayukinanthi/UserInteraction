@@ -1,10 +1,13 @@
 package android.example.userinteraction;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -67,15 +70,15 @@ public class MainActivity extends AppCompatActivity {
         switch (view.getId()){
             case R.id.radio_p1:
                 if(checked)
-                    Toast.makeText(this, "Anda memilih pilihan 1", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Anda memilih Nasi Goreng", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.radio_p2:
                 if(checked)
-                    Toast.makeText(this, "Anda memilih pilihan 2", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Anda memilih Bakwan Malang", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.radio_p3:
                 if(checked)
-                    Toast.makeText(this, "Anda memilih pilihan 3", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Anda memilih Soto Babat", Toast.LENGTH_SHORT).show();
                 break;
         }
 
@@ -88,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         myAlertBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(MainActivity.this, "Anda memmilik OK! ^^", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Anda memilih OK! ^^", Toast.LENGTH_SHORT).show();
             }
         });
         myAlertBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -98,5 +101,31 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         myAlertBuilder.show();
+    }
+
+
+    /**untuk deklarasi menu**/
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu,menu);
+        return true;
+    }
+
+    /**menerima pilihan saat menu tsb di klik**/
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_menu1:
+                Toast.makeText(MainActivity.this, "Anda memilih Add Cart", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.action_menu2:
+                Toast.makeText(MainActivity.this, "Anda memilih Update Cart", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.action_menu3:
+                Toast.makeText(MainActivity.this, "Anda memilih Delete Cart", Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+            return super.onOptionsItemSelected(item);
+        }
     }
 }
