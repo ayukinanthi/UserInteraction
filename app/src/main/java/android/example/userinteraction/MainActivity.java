@@ -1,7 +1,9 @@
 package android.example.userinteraction;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -80,5 +82,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void showAlert(View view) {
+        AlertDialog.Builder myAlertBuilder=new AlertDialog.Builder(this);
+        myAlertBuilder.setTitle("Peringatan!!");
+        myAlertBuilder.setMessage("Click Ok to continue or cancel to stop.");
+        myAlertBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(MainActivity.this, "Anda memmilik OK! ^^", Toast.LENGTH_SHORT).show();
+            }
+        });
+        myAlertBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(MainActivity.this, "Anda memilih Cancel T__T ", Toast.LENGTH_SHORT).show();
+            }
+        });
+        myAlertBuilder.show();
     }
 }
