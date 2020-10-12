@@ -7,8 +7,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     /**menambah komponen**/
@@ -54,5 +56,29 @@ public class MainActivity extends AppCompatActivity {
         String showString="Phone Number: "+label+" - "+editText.getText().toString();
         textView.setText(showString);
 
+    }
+
+    public void onRadioButtonClicked(View view) {
+        /**mengecek radio button**/
+        boolean checked = ((RadioButton)view).isChecked();
+        /**cara mengecek radio button mana yg mau dicek menggunakan switch**/
+        switch (view.getId()){
+            case R.id.radio_p1:
+                if(checked)
+                    Toast.makeText(this, "Anda memilih pilihan 1", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.radio_p2:
+                if(checked)
+                    Toast.makeText(this, "Anda memilih pilihan 2", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.radio_p3:
+                if(checked)
+                    Toast.makeText(this, "Anda memilih pilihan 3", Toast.LENGTH_SHORT).show();
+                break;
+        }
+
+    }
+
+    public void showAlert(View view) {
     }
 }
